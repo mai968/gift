@@ -1,122 +1,54 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Valentine Gift</title>
-
-<style>
-body{
-    margin:0;
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family:Arial, Helvetica, sans-serif;
-    overflow:hidden;
-    background: linear-gradient(135deg,#ff4d6d,#ff8fab);
-}
-
-/* hộp quà */
-.box{
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    text-align:center;
-    width:300px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
-}
-
-input{
-    padding:10px;
-    width:90%;
-    margin-top:10px;
-}
-
-button{
-    margin-top:10px;
-    padding:10px 15px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    background:#ff4d6d;
-    color:white;
-}
-
-/* phần sau khi mở quà */
-#gift{
-    display:none;
-    text-align:center;
-    color:white;
-}
-
-#gift h1{
-    font-size:30px;
-}
-
-/* tim rơi */
-.heart{
-    position:fixed;
-    top:-10px;
-    color:red;
-    animation:fall linear forwards;
-}
-
-@keyframes fall{
-    to{
-        transform:translateY(100vh);
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Gift</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- nhập mật khẩu -->
-<div class="box" id="loginBox">
-    <h2>🎁 Có món quà cho bạn</h2>
-    <p>Nhập mật khẩu để mở</p>
-    <input type="password" id="password" placeholder="Mật khẩu">
-    <br>
-    <button onclick="openGift()">Mở quà</button>
+<!-- ===== LOCK SCREEN ===== -->
+<div class="lock-screen">
+
+    <div class="top">
+        <div class="lock-icon">🔒</div>
+        <p class="title">Enter Passcode</p>
+
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <div class="keypad">
+        <button class="key">1</button>
+        <button class="key">2</button>
+        <button class="key">3</button>
+        <button class="key">4</button>
+        <button class="key">5</button>
+        <button class="key">6</button>
+        <button class="key">7</button>
+        <button class="key">8</button>
+        <button class="key">9</button>
+        <div></div>
+        <button class="key">0</button>
+        <button class="key delete">⌫</button>
+    </div>
+
 </div>
 
-<!-- nội dung quà -->
-<div id="gift">
-    <h1>❤️ Happy Valentine ❤️</h1>
-    <p>Bạn là điều tuyệt vời nhất với mình!</p>
+<!-- ===== CHAT SCREEN ===== -->
+<div class="chat-screen" id="chatScreen">
+    <div class="chat-header">
+        🎂 Happy Birthday 🎉
+    </div>
+
+    <div class="messages" id="messages"></div>
 </div>
 
-<script>
-const correctPassword = "1602"; // đổi mật khẩu tại đây
-
-function openGift(){
-    const pw = document.getElementById("password").value;
-
-    if(pw === correctPassword){
-        document.getElementById("loginBox").style.display="none";
-        document.getElementById("gift").style.display="block";
-        startHearts();
-    }else{
-        alert("Sai mật khẩu rồi!");
-    }
-}
-
-/* tạo tim rơi */
-function startHearts(){
-    setInterval(()=>{
-        const heart = document.createElement("div");
-        heart.className="heart";
-        heart.innerHTML="❤";
-        heart.style.left=Math.random()*100+"vw";
-        heart.style.fontSize=(Math.random()*20+10)+"px";
-        heart.style.animationDuration=(Math.random()*3+2)+"s";
-        document.body.appendChild(heart);
-
-        setTimeout(()=>heart.remove(),5000);
-    },300);
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
